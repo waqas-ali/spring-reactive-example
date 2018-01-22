@@ -1,6 +1,8 @@
 package com.baeldung.reactive.model;
 
-public class Foo {
+import java.util.function.Supplier;
+
+public class Foo implements Supplier<Foo> {
   private int id;
   private String name;
   
@@ -27,6 +29,10 @@ public class Foo {
   @Override
   public String toString() {
     return id + "-" + name;
+  }
+  @Override
+  public Foo get() {
+    return new Foo(this.id + 1,this.name);
   }
   
 }
